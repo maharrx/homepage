@@ -75,7 +75,8 @@
             }
         </style>
     </noscript>
-
+    
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700%7CLora%7CLato" rel="stylesheet">
 
@@ -105,6 +106,19 @@
 
 <body>
 
+    <amp-analytics type="gtag" data-credentials="include">
+        <script type="application/json">
+        {
+          "vars" : {
+            "gtag_id": "G-VGK563NXES",
+            "config" : {
+              "G-VGK563NXES": { "groups": "default" }
+            }
+          }
+        }
+        </script>
+    </amp-analytics>
+
     <main>        
         
         <section class="intro">
@@ -129,7 +143,7 @@
                 
                 <p class="justify">
                     I am a Ph.D. student at the Department of Health Technology at the Technical University of Denmark. My research focuses on Human-Computer Interaction and designing personal health technology to support well being. 
-                    Currently, I am investigating conversation design to support the self-report of health and well-being via conversational agents.
+                    Currently, I am investigating conversation design to support the self-report of health and well-being via speech-based conversational agents.
                 </p>
             </div>
         </section>
