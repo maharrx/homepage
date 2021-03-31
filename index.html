@@ -67,6 +67,7 @@
         ol {list-style: none; counter-reset: custom-counter;}
         
         ol li {counter-increment: custom-counter;  display: flex;}
+        ul.left-align{padding-left: 1.25rem;}
         ol li::before {content: counter(custom-counter) "."; margin-right: 0.75rem;}
 
         
@@ -302,7 +303,7 @@
                         <div class="sm-col sm-col-10 md-col-9 lg-col-10 px3">
                             <p class="h2 m0">Teaching Assistant</p>
                             
-                            <ol class="list-reset">
+                            <ul class="left-align">
                                 <li class="my1">02808 Personal Informatics<span class="md-show">, 49 students</span></li>
                                 <li class="my1">02266 User Experience Engineering<span class="md-show">, 100+ students</span></li>
                                 <li class="my1">02809 User Experience Design & Prototyping<span class="md-show">, 150+ students</span></li>
