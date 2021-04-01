@@ -77,8 +77,8 @@
         ol li::before {content: counter(custom-counter) "."; margin-right: 0.75rem;}
 
         .sticky{position: sticky; position: -webkit-sticky;}
-        h1.sticky-top{overflow: hidden; z-index: 2; top:0rem;} 
-        h2.sticky-top{overflow: hidden; z-index: 1; top:5rem;} 
+        h1.sticky-top{overflow: hidden; z-index: 2; top:-1rem;} 
+        h2.sticky-top{overflow: hidden; z-index: 1; top:2.5rem;} 
         
 
         @media only screen and (min-width: 40em){ /* breakpoint-sm */
@@ -87,7 +87,6 @@
         @media only screen and (min-width: 52em){ /* breakpoint-md */
             html, body{ font-size: 1em;}
             section:not(#about) { padding: 4rem 0;}
-            h2{ padding: 2rem 0;}
             .md-show{ display: inline-block;}
             section#about{min-height: 100vh; max-width: 100vw; }
             h1{ font-size: 5em;}   
