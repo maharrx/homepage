@@ -33,7 +33,8 @@
 
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@200;400;600&family=Vidaloka&display=swap" rel="stylesheet">
@@ -64,18 +65,23 @@
         .muted{ opacity: 0.75;}        
         
         .md-show{ display: none;}
+        
+        .profile-picture{ max-width: 250px;  filter: grayscale(0.5) contrast(1.15) brightness(1.15); }
+
 
         section:nth-child(even) h1,
         section:nth-child(even) h2,
         section:nth-child(even){ background: var(--bg-lighter);}
         section:nth-child(even) .highlight{color: #000000;}
         
+        section > header[aria-expanded="false"],
+        section > header[aria-expanded="true"]{outline: none;background: transparent; border: none;  background: url(plus.svg) no-repeat right 0px top 20px; border-top: 1px dotted transparent}
+        section > header[aria-expanded="true"]{background: url(minus.svg) no-repeat right -0px top 20px; border-top: 1px dotted var(--color-underline);}
+        section > header[aria-expanded="true"]+div{border-bottom: 1px dotted var(--color-underline); margin-bottom: -1px;}
 
-        .profile-picture{ max-width: 250px;  filter: grayscale(0.5) contrast(1.15) brightness(1.15); }
-        /* .date{ display: flex; flex-wrap: wrap; padding: 0.1em 0; } */
+        .accordion-container section:first-child > header{  border:none }
 
         ol {list-style: none; counter-reset: custom-counter;}
-        
         ol li {counter-increment: custom-counter;  display: flex;}
         ul.left-align{padding-left: 1.25rem;}
         ol li::before {content: counter(custom-counter) "."; margin-right: 0.75rem;}
@@ -86,12 +92,13 @@
         h2.sticky{z-index: 1; top:5.5rem;} 
         h2.sticky::after{ content: " "; position: absolute; bottom:1px; left: 0; width: 100%;  height: 1px; background:var(--color-underline);}
         
-        @media only screen and (min-width: 40em){ /* breakpoint-sm */
-            
+
+        @media only screen and (min-width: 40em){ /* breakpoint-sm */            
         }
         @media only screen and (min-width: 52em){ /* breakpoint-md */
             html, body{ font-size: 1em;}
-            section:not(#about) { padding: 4rem 0;}
+            main > section:not(#about){ padding: 4rem 0;}
+
             .md-show{ display: inline-block;}
             section#about{min-height: 100vh; max-width: 100vw; }
             h1{ font-size: 5em;}   
@@ -109,18 +116,6 @@
 
 <body>
 
-    <amp-analytics type="gtag" data-credentials="include">
-        <script type="application/json">
-        {
-          "vars" : {
-            "gtag_id": "G-VGK563NXES",
-            "config" : {
-              "G-VGK563NXES": { "groups": "default" }
-            }
-          }
-        }
-        </script>
-    </amp-analytics>
 
     <main>        
         
@@ -296,7 +291,7 @@
                     <div class="clearfix mxn3 py2">
 
                         <div class="sm-col sm-col-2 md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">07.19-12.19</p>
+                            <p class="h3 m0">7.19-12.19</p>
                         </div>
                         
                         <div class="col col-10 md-col-9 lg-col-10 px3">
@@ -310,7 +305,7 @@
                     <div class="clearfix mxn3 py2">
 
                         <div class="sm-col sm-col-2 md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">02.19-12.19</p>
+                            <p class="h3 m0">2.19-12.19</p>
                         </div>
                         
                         <div class="sm-col sm-col-10 md-col-9 lg-col-10 px3">
@@ -330,103 +325,249 @@
                 </div>
 
                 <!-- Employment -->
-                <div class="clearfix py2">
+                <div class="accordion-container clearfix py2">
+
                     <h2 class="caps my2 py2 sticky">Employment</h2>
+                    
+                    <amp-accordion>
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">10.17-01.18</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Frontend Developer</p>
-                            <p class="m0">Google, San Jose</p>
-                        </div>
-                    </div>
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">10.17-1.18</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Frontend Developer</p>
+                                        <p class="m0">Google, San Jose</p>
+                                    </div>
+                                </div>
+                            </header>
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">03.15-08.17</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">UI/UX Engineer</p>
-                            <p class="m0">Abbott Point of Care, New Jersey</p>
-                        </div>
-                    </div>
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Worked with Google mSite team on performance engineering of websites for mobile devices.</li>
+                                        <li> Analyzed mobile web pages and prioritized action items to increase the site's speed for better user experience.</li>
+                                        <li> Developed Accelerated Mobile Pages (AMP) for clients' websites.</li>
+                                    </ol>
+                                </div>
+                            </div>  
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">08.13-07.14</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Frontend Developer</p>
-                            <p class="m0">Harland Clarke, Texas</p>
-                        </div>
-                    </div>
+                        </section>
+                        
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">3.15-8.17</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">UI/UX Engineer</p>
+                                        <p class="m0">Abbott Point of Care, New Jersey</p>
+                                    </div>
+                                </div>    
+                            </header>
+                            
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Contributed to all the stages of SDLC to create a cloud based clinical instrument (i-STAT Alinity) management system focusing on scalability and usability.</li>
+                                        <li> Translated concepts into meaningful user interfaces following user-centered design process by iteratively creating user flows, wireframes, mockups and prototypes.</li>
+                                        <li> Developed interfaces with intuitive navigation to maximize user engagement utilizing asynchronous JavaScript, HTML5, CSS3 and C#.</li>
+                                    </ol>
+                                </div>
+                            </div>    
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">04.12-05.12</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Frontend Developer</p>
-                            <p class="m0">NYC Human Resource Administration, New York</p>
-                        </div>
-                    </div>
+                        </section>
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">06.11-01.12</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Director of Technology</p>
-                            <p class="m0">Artbox-NYC College of Technology, New York</p>
-                        </div>
-                    </div>
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">8.13-7.14</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Frontend Developer</p>
+                                        <p class="m0">Harland Clarke, Texas</p>
+                                    </div>
+                                </div>    
+                            </header>
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">04.11-01.12</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Web Designer/Developer</p>
-                            <p class="m0">NYC College of Technology, New York</p>
-                        </div>
-                    </div>
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li>Worked on multiple projects concurrently with a dynamic team of designers and backend developers to create web pages and re-usable UI components for some of the high traffic eCommerce websites like Walmart, Office Depot,
+                                        iPrint, Sage, and Expressionery.</li>
+                                        <li>Implemented user interactions into the web applications using HTML5, CSS3 and jQuery to ensure the attainment of client’s business objectives, brand and marketing strategies.</li>
+                                    </ol>
+                                </div>
+                            </div>   
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">11.09-09.10</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Web Designer/Developer</p>
-                            <p class="m0">IBREA Foundation, New York</p>
-                        </div>
-                    </div>
+                        </section>
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">11.09-10.10</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Web Developer</p>
-                            <p class="m0">Boom Digital Ventures, New York</p>
-                        </div>
-                    </div>
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">4.12-5.12</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Frontend Developer</p>
+                                        <p class="m0">NYC Human Resource Administration, New York</p>
+                                    </div>
+                                </div>    
+                            </header>
 
-                    <div class="clearfix mxn3 py2">
-                        <div class="md-col md-col-3 lg-col-2 px3">
-                            <p class="h3 m0">07.07-05.08</p>
-                        </div>
-                        <div class="md-col md-col-9 lg-col-10 px3">
-                            <p class="h2 m0">Student Technology Mentor</p>
-                            <p class="m0">LaGuardia Community College, New York</p>
-                        </div>
-                    </div>
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li>Designed and implemented interfaces for a high-traffic web portal that allowed access and allocation of resources to AIDS patients in all five boroughs of New York City.</li>
+                                        <li>Responsible for the overall branding and optimization of the web pages by implementing HTML5 and CSS3.</li>
+                                    </ol>
+                                </div>
+                            </div>  
+
+                        </section>
+
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">6.11-1.12</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Director of Technology</p>
+                                        <p class="m0">Artbox - NYC College of Technology, New York</p>
+                                    </div>
+                                </div>    
+                            </header>
+
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Researched the latest technologies for an NSF-funded project that aimed to develop an online community of upcoming artists and art enthusiasts.</li>
+                                        <li> I Conducted user research by interviewing local artists around New York, field visits to museums, auction houses and art exhibitions to understand the users' need for a local, social, and mobile app.</li>
+                                    </ol>
+                                </div>
+                            </div>  
+
+                        </section>
+
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">4.11-1.12</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Web Designer/Developer</p>
+                                        <p class="m0">NYC College of Technology, New York</p>
+                                    </div>
+                                </div>    
+                            </header>
+
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Designed and implemented information architecture of a grant allocation matrix into the I-cubed (Innovation through Institutional Integration) website.</li>
+                                        <li> Developed WordPress theme with customized admin using HTML5, CSS3, jQuery and PHP for easy administration of the site.</li>
+                                    </ol>
+                                </div>
+                            </div>  
+
+                        </section>
+
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">11.09-9.10</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Web Designer/Developer</p>
+                                        <p class="m0">IBREA Foundation, New York</p>
+                                    </div>
+                                </div>    
+                            </header>
+
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Designed and developed WordPress-based websites to reflect the core values of the foundation and its supporters.</li>
+                                        <li> Integrated PayPal, S2 membership and Scorm Cloud to run and manage online courses.</li>
+                                        <li> Created a custom CRM system that featured invoicing and an automated notification system to keep a record of donors and subscribers.</li>
+                                    </ol>
+                                </div>
+                            </div>  
+
+                        </section>
+
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">11.09-10.10</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Web Developer</p>
+                                        <p class="m0">Boom Digital Ventures, New York</p>
+                                    </div>
+                                </div>    
+                            </header>
+
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Worked with a cross functional team from around the world to create cutting edge user experience for Maybelline New York website.</li>
+                                        <li> Converted PSDs in to pixel perfect web pages for clients such as KMart, Avalon Organics, Maranatha, Alba Botanica, and Jason Personal Care.</li>
+                                        <li> Created newsletters using HTML, inline CSS and media queries for mobile device support.</li>
+                                        <li> Built multiple WordPress themes with user friendly interfaces both in admin and front end..</li>
+                                    </ol>
+                                </div>
+                            </div>  
+
+                        </section>
+
+                        <section>                          
+                            <header class="py2">
+                                <div class="clearfix mxn3">
+                                    <div class="md-col md-col-3 lg-col-2 px3">
+                                        <p class="h3 m0">7.07-5.08</p>
+                                    </div>
+                                    <div class="md-col md-col-9 lg-col-10 px3">
+                                        <p class="h2 m0">Student Technology Mentor</p>
+                                        <p class="m0">LaGuardia Community College, New York</p>
+                                    </div>
+                                </div>    
+                            </header>
+                            <div class="clearfix">
+                                <div class="md-col md-col-3 lg-col-2"> &nbsp;</div>
+                                <div class="md-col md-col-9 lg-col-10 px1">
+                                    <ol class="m0 p0">
+                                        <li> Helped faculty design, develop, utilize, and maintain technology-enriched teaching resources such as PowerPoint presentations, web pages, blackboard courses, interactive multimedia, ePortfolio
+                                            development, library database and Internet searches.</li>
+                                        <li> Designed interactive tutorials in Flash for students and faculty, and helped them in the use of various technology tools for research, web development, and document production.</li>
+                                    </ol>
+                                </div>
+                            </div>  
+
+                        </section>
+
+                    </amp-accordion>
 
                 </div>
 
-
             </div>
+
         </section>
         
         
@@ -504,6 +645,7 @@
 
         
         </section>
+
 
 
         <footer class="py4 inverse center">
