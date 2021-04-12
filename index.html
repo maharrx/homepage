@@ -93,7 +93,62 @@
         h2.sticky{z-index: 1; top:5.5rem;} 
         h2.sticky::after{ content: " "; position: absolute; bottom:1px; left: 0; width: 100%;  height: 1px; background:var(--color-underline);}
         
+        /* Mouse scroll animation */
+        .mouse {
+        width: 30px;
+        height: 50px;
+        border-radius: 30px;
+        border: 3px solid var(--color-underline);
+        position: absolute;
+        top: calc(100vh - 150px);
+        left: calc(50% - 20px);
+        display: none;
+        }
+        .mouse:before, .mouse:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        }
 
+        .mouse:before, .mouse:after {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        top: 7px;
+        left: calc(50% - 3px);
+        background: var(--color-underline);
+        opacity: 0;
+        -webkit-animation: mouse-ball 1.2s ease-in-out infinite;
+                animation: mouse-ball 1.2s ease-in-out infinite;
+        }
+        .mouse:after {
+        -webkit-animation-delay: 0.6s;
+                animation-delay: 0.6s;
+        }
+
+        @-webkit-keyframes mouse-ball {
+        50% {
+            opacity: 1;
+        }
+        47.5%, 52.5% {
+            transform: translateY(10px);
+        }
+        100% {
+            transform: translateY(20px);
+        }
+        }
+
+        @keyframes mouse-ball {
+        50% {
+            opacity: 1;
+        }
+        47.5%, 52.5% {
+            transform: translateY(10px);
+        }
+        100% {
+            transform: translateY(20px);
+        }
+        }
         @media only screen and (min-width: 40em){ /* breakpoint-sm */            
         }
         @media only screen and (min-width: 52em){ /* breakpoint-md */
@@ -110,6 +165,7 @@
         }
         @media only screen and (min-width: 64em){ /* breakpoint-lg */
             /* .title{ font-size: 5em;}     */
+            .mouse{ display: block;}
         }
 
     </style>
@@ -117,7 +173,8 @@
 
 <body>
 
-
+    <div class="mouse"></div>
+    
     <main>        
         
         <section id="about" class="flex items-center">
