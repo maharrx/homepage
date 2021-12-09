@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /sofia_in_the_wild.pdf
